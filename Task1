@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    vector <int> number;
+    string s;
+    cout << "Enter your a number with a dot:\n";
+    cin >> s;
+
+    for(int i=0; i < s.size(); i++) number.push_back(s[i]);
+    int dot;
+    for(int j=0; j < number.size(); j++){
+        if(number[j] == '.') dot = j;
+    }
+    double your_double = 0;
+    for(int left = 1; left <= dot; left++){
+        your_double+= (number[left - 1] - 48) * pow(10,dot - left);
+    }
+    int right = 1;
+    while (dot + right < number.size()){
+        your_double+= (number[dot + right] - 48) * pow(10,- right);
+        right++;
+    }
+
+    cout << your_double;
+    return 0;
+}
